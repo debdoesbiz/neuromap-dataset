@@ -1,0 +1,26 @@
+image_id,image_type,brain_region,activation_pattern,emotion_primary,emotion_secondary,intent_state,arousal,valence,psychology_tag,scanner_type,resolution,notes,source,license
+img_001.png,fmri_activation_map,"fusiform_face_area, parahippocampal_place_area",face_vs_object_response,recognition,,social_perception,medium,neutral,face_processing,MRI,standard,"Haxby 2001 - Even/Odd run reliability r=0.81-0.87. Red=face response Blue=house response. Foundational study on distributed object representation",research_screenshot,CC BY 4.0
+img_002.png,clinical_fmri_scan,multiple,task_based_bold_activation,,,clinical_assessment,medium,neutral,neurological_evaluation,MRI,clinical,"Clinical fMRI case scan. Pre-surgical planning or neurological evaluation. Task-based activation overlay on structural scan",research_screenshot,CC BY 4.0
+img_003.png,fmri_overview_image,whole_brain,general_bold_signal,,,general,low,neutral,brain_imaging_overview,MRI,standard,"General fMRI brain scan. Full axial slice showing BOLD activation. Educational/overview use",research_screenshot,CC BY 4.0
+img_004.png,fmri_scan,whole_brain,bold_signal,,,general,low,neutral,functional_imaging,MRI,standard,"fMRI scan showing functional activation across brain regions",research_screenshot,CC BY 4.0
+img_005.png,fmri_scan,whole_brain,bold_signal,,,general,medium,neutral,functional_imaging,MRI,standard,"fMRI scan image showing brain activation patterns",research_screenshot,CC BY 4.0
+img_006.png,fmri_scan,whole_brain,bold_signal,,,general,medium,neutral,functional_imaging,MRI,standard,"fMRI brain scan showing functional activation regions",research_screenshot,CC BY 4.0
+img_007.png,fmri_scan,whole_brain,bold_signal,,,general,low,neutral,brain_structure_function,MRI,standard,"fMRI brain image showing structural and functional data overlay",research_screenshot,CC BY 4.0
+img_008.png,modality_comparison,whole_brain,bold_vs_spect_signal,,,diagnostic_comparison,low,neutral,neuroimaging_modalities,fMRI vs SPECT,comparative,"Comparison between fMRI and SPECT scan modalities. Shows differences in imaging techniques",research_screenshot,CC BY 4.0
+img_009.png,fmri_scan,whole_brain,bold_signal,,,general,low,neutral,functional_imaging,MRI,standard,"fMRI brain scan showing activation pattern",research_screenshot,CC BY 4.0
+img_010.png,fmri_scan,whole_brain,bold_signal,,,general,low,neutral,functional_imaging,MRI,standard,"fMRI brain scan reference image",research_screenshot,CC BY 4.0
+img_011.png,fmri_scan,whole_brain,bold_signal,,,general,low,neutral,functional_imaging,MRI,standard,"fMRI brain scan reference image",research_screenshot,CC BY 4.0
+img_012.png,fmri_scan,whole_brain,bold_signal,,,general,low,neutral,functional_imaging,MRI,standard,"fMRI brain scan reference image",research_screenshot,CC BY 4.0
+img_013.png,fmri_scan,whole_brain,bold_signal,,,general,low,neutral,functional_imaging,MRI,standard,"fMRI brain scan reference image",research_screenshot,CC BY 4.0
+img_014.png,fmri_scan,whole_brain,bold_signal,,,general,low,neutral,functional_imaging,MRI,standard,"fMRI brain scan reference image",research_screenshot,CC BY 4.0
+img_015.png,fmri_scan,whole_brain,bold_signal,,,general,low,neutral,functional_imaging,MRI,standard,"fMRI brain scan reference image",research_screenshot,CC BY 4.0
+img_016.png,fmri_scan,whole_brain,bold_signal,,,general,low,neutral,functional_imaging,MRI,standard,"fMRI brain scan reference image",research_screenshot,CC BY 4.0
+img_017.png,fmri_scan,whole_brain,bold_signal,,,general,low,neutral,functional_imaging,MRI,standard,"fMRI brain scan reference image",research_screenshot,CC BY 4.0
+img_018.png,fmri_scan,whole_brain,bold_signal,,,general,low,neutral,functional_imaging,MRI,standard,"fMRI brain scan reference image",research_screenshot,CC BY 4.0
+img_019.png,fmri_scan,whole_brain,bold_signal,,,general,low,neutral,functional_imaging,MRI,standard,"fMRI brain scan reference image",research_screenshot,CC BY 4.0
+img_020.png,fmri_scan,whole_brain,bold_signal,,,general,low,neutral,functional_imaging,MRI,standard,"fMRI brain scan reference image",research_screenshot,CC BY 4.0
+img_021.png,fmri_scan,whole_brain,bold_signal,,,general,low,neutral,functional_imaging,MRI,standard,"fMRI brain scan - maxresdefault resolution image",research_screenshot,CC BY 4.0
+img_022.png,fmri_overview,whole_brain,bold_signal,,,general,low,neutral,functional_imaging,MRI,standard,"Omnivision fMRI overview image",research_screenshot,CC BY 4.0
+img_023.png,resolution_comparison,"occipital_lobe, visual_cortex",visual_bold_activation,,,visual_attention,low,neutral,visual_processing,"NexGen 7T / 7T / 3T","0.56mm / 0.8mm / 1.5mm","Scanner resolution comparison. Three scanners side by side showing visual cortex BOLD activation. Orange/red = activation",research_screenshot,CC BY 4.0
+img_024.png,scanner_environment,,,,,,low,neutral,clinical_procedure,MRI,clinical,"Patient inside MRI scanner machine. Clinical context image showing fMRI procedure environment",research_screenshot,CC BY 4.0
+img_025.png,educational_diagram,whole_brain,bold_mechanism,,,general,low,neutral,how_fmri_works,MRI,diagram,"Educational diagram explaining how fMRI works - fig 3. Shows BOLD signal mechanism and brain activity detection process",research_screenshot,CC BY 4.0

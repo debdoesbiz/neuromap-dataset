@@ -1,0 +1,1698 @@
+================================================================================
+FMRI COMPLETE KNOWLEDGE BASE
+For the NeuroMap Dataset — Open Brain-Psychology AI Research
+Author: Debojeet Mukherjee | github.com/debdoesbiz
+Version: 1.0 | 2025 | License: CC BY 4.0
+================================================================================
+
+This document is a comprehensive reference covering everything about functional
+Magnetic Resonance Imaging (fMRI) — from the physics of how it works, to brain
+regions, emotions, psychology, neural pathways, AI/ML applications, and research
+methods. It is intended as training text data for brain-based AI models.
+
+================================================================================
+TABLE OF CONTENTS
+================================================================================
+
+1.  WHAT IS fMRI?
+2.  HOW fMRI WORKS — THE PHYSICS
+3.  THE BOLD SIGNAL EXPLAINED
+4.  fMRI VS OTHER BRAIN IMAGING METHODS
+5.  BRAIN ANATOMY — KEY REGIONS
+6.  BRAIN REGIONS AND THEIR FUNCTIONS
+7.  NEURAL PATHWAYS — HOW REGIONS CONNECT
+8.  EMOTION DETECTION WITH fMRI
+9.  THE 8 PRIMARY EMOTIONS — BRAIN MAPPING
+10. INTENT DETECTION WITH fMRI
+11. PSYCHOLOGY CLASSIFICATION WITH fMRI
+12. PSYCHIATRIC DISORDERS AND fMRI
+13. fMRI DATA PREPROCESSING PIPELINE
+14. ANALYSIS METHODS — GLM AND MVPA
+15. MACHINE LEARNING FOR fMRI
+16. DEEP LEARNING FOR BRAIN DECODING
+17. FUNCTIONAL CONNECTIVITY
+18. RESTING STATE fMRI
+19. TASK-BASED fMRI
+20. fMRI EXPERIMENTAL DESIGN
+21. KEY RESEARCH FINDINGS
+22. LIMITATIONS OF fMRI
+23. GLOSSARY OF TERMS
+24. KEY RESEARCHERS AND PAPERS
+25. DATASETS AND RESOURCES
+
+================================================================================
+SECTION 1: WHAT IS fMRI?
+================================================================================
+
+Functional Magnetic Resonance Imaging (fMRI) is a non-invasive neuroimaging
+technique that measures brain activity by detecting changes in blood flow and
+blood oxygenation. It is one of the most powerful tools available for studying
+the human brain in action.
+
+Unlike structural MRI which shows only the anatomy of the brain (its shape,
+size, and structure), fMRI measures what the brain is DOING — which regions
+are active during a task, emotion, memory, decision, or sensory experience.
+
+KEY FACTS:
+- Invented in the early 1990s by Seiji Ogawa and colleagues at Bell Labs
+- Does not use radiation (unlike PET scans or X-rays)
+- Uses strong magnetic fields and radio waves
+- Measures activity indirectly through blood flow changes
+- Temporal resolution: ~1-4 seconds per full brain volume
+- Spatial resolution: ~1-3mm depending on scanner strength
+- Typical scanner strength: 1.5T, 3T, or 7T (Tesla)
+- Session duration: usually 30 minutes to 2 hours
+- Subject must remain completely still during scanning
+- Scanner produces loud banging sounds (70-100 dB)
+
+WHAT CAN fMRI DETECT:
+- Which brain regions activate during specific tasks
+- Emotion states (fear, joy, sadness, anger, disgust etc.)
+- Cognitive states (attention, memory, decision-making)
+- Language processing (reading, speaking, listening)
+- Social cognition (face recognition, empathy, theory of mind)
+- Pain processing
+- Motor planning and movement
+- Visual and auditory processing
+- Sleep states
+- Consciousness levels (useful for coma patients)
+
+CLINICAL USES:
+- Pre-surgical brain mapping (finding speech/motor areas before tumor removal)
+- Epilepsy focus localization
+- Alzheimer's disease monitoring
+- Stroke recovery assessment
+- Psychiatric disorder research (depression, PTSD, schizophrenia)
+- Traumatic brain injury (TBI) evaluation
+
+================================================================================
+SECTION 2: HOW fMRI WORKS — THE PHYSICS
+================================================================================
+
+fMRI is based on a phenomenon called the hemodynamic response — the brain's
+vascular response to neural activity.
+
+STEP BY STEP — HOW THE BRAIN CREATES AN fMRI SIGNAL:
+
+Step 1 — Neural Activity
+When neurons fire (become electrically active), they require energy. This energy
+comes from glucose and oxygen. As neurons fire more rapidly, their local demand
+for oxygen increases sharply.
+
+Step 2 — Neurovascular Coupling
+The brain has a rapid response system: when neurons in a region become active,
+blood vessels in that area dilate and blood flow increases dramatically —
+delivering more oxygenated blood than the neurons actually need. This
+over-delivery is the key to fMRI.
+
+Step 3 — Change in Blood Oxygenation
+The extra oxygenated blood floods the active area. This changes the ratio of
+oxygenated hemoglobin (oxyhemoglobin) to deoxygenated hemoglobin
+(deoxyhemoglobin) in the blood. These two forms of hemoglobin have different
+magnetic properties — oxyhemoglobin is diamagnetic (slightly repels magnetic
+fields) while deoxyhemoglobin is paramagnetic (slightly attracted to magnetic
+fields).
+
+Step 4 — The Magnetic Signal
+The MRI scanner detects this difference. When an area becomes active, the flood
+of oxygenated blood reduces the amount of paramagnetic deoxyhemoglobin — and
+this change is picked up by the scanner as a small change in the MRI signal.
+
+Step 5 — The BOLD Signal
+This measurable change in signal is called the Blood Oxygen Level Dependent
+(BOLD) signal. It is the raw measurement underlying all fMRI data.
+
+THE HEMODYNAMIC RESPONSE FUNCTION (HRF):
+The brain's blood flow response follows a predictable time course:
+- 0-2 seconds: Neural activity begins (silent to fMRI)
+- 2-4 seconds: BOLD signal begins to rise (initial dip sometimes visible)
+- 4-8 seconds: BOLD signal peaks (maximum activation visible)
+- 8-12 seconds: BOLD signal gradually falls
+- 12-20 seconds: Signal returns to baseline
+- 20-30 seconds: Sometimes a slight undershoot before full baseline return
+
+This delay between neural firing and measurable BOLD signal is called
+neurovascular coupling lag and is a fundamental limitation of fMRI.
+
+MRI SCANNER MECHANICS:
+- A powerful electromagnet (1.5T to 7T) creates a uniform magnetic field
+- Hydrogen atoms in brain water molecules align with this field
+- Radio frequency (RF) pulses knock these atoms out of alignment
+- As they realign they emit signals detected by receiver coils
+- The spatial encoding of these signals creates 3D images
+- Each 3D image is called a volume
+- A typical session acquires hundreds of volumes over time
+
+ECHO PLANAR IMAGING (EPI):
+The most common fMRI acquisition method is Echo Planar Imaging (EPI).
+- Acquires a full brain volume very quickly (1-4 seconds)
+- Trades some spatial resolution for speed
+- Particularly sensitive to BOLD signal changes
+- Susceptible to distortions near air-tissue interfaces (sinuses, ear canals)
+
+VOXELS:
+A voxel is a 3D pixel — the basic unit of fMRI data.
+- Typical voxel size: 2x2x2mm to 3x3x3mm
+- A single brain volume contains ~50,000 to 200,000 voxels
+- Each voxel contains the BOLD signal from thousands of neurons
+- fMRI cannot detect single neuron activity — it works at population level
+
+================================================================================
+SECTION 3: THE BOLD SIGNAL EXPLAINED
+================================================================================
+
+The BOLD (Blood Oxygen Level Dependent) signal is the core measurement of fMRI.
+Understanding it deeply is essential for all fMRI analysis and AI applications.
+
+BOLD SIGNAL CHARACTERISTICS:
+- Amplitude: very small — typically 1-5% signal change above baseline
+- Time course: slow (seconds), not milliseconds like neural spikes
+- Indirect: measures blood oxygenation, NOT electrical neural activity directly
+- Noisy: contains cardiac noise, respiratory noise, scanner drift, motion
+- Relative: measured as change from baseline, not absolute activity
+
+WHAT INCREASES BOLD SIGNAL:
+- Increased neural firing rates in a region
+- Increased metabolic demand
+- Stronger sensory stimulation
+- Greater cognitive effort
+- Emotional arousal
+
+WHAT DECREASES BOLD SIGNAL:
+- Reduced neural activity (inhibition)
+- Neural suppression
+- Default mode network deactivation during tasks
+
+SIGNAL TO NOISE CHALLENGES:
+- Signal change is only 1-5% above background noise
+- Head motion contaminates signal (even 1mm movement causes artifacts)
+- Cardiac pulsation creates rhythmic noise (~1Hz)
+- Breathing creates slow noise (~0.3Hz)
+- Scanner thermal noise is always present
+- This is why preprocessing and statistical analysis are critical
+
+BOLD AND EMOTION:
+For emotion detection specifically, the BOLD signal in key regions like the
+amygdala, insula, and prefrontal cortex changes predictably with emotional state:
+- Fear: strong amygdala BOLD increase
+- Disgust: strong insula BOLD increase
+- Joy: ventral striatum and medial PFC increase
+- Sadness: subgenual ACC and insula increase
+- Anger: amygdala and orbitofrontal cortex increase
+- Surprise: activates broadly across attention and salience networks
+- Calm: default mode network more active, amygdala reduced
+
+================================================================================
+SECTION 4: fMRI VS OTHER BRAIN IMAGING METHODS
+================================================================================
+
+COMPARISON TABLE:
+
+Method       | What it measures        | Time res | Space res | Invasive | Cost
+-------------|-------------------------|----------|-----------|----------|-------
+fMRI         | Blood oxygen (BOLD)     | 1-4 sec  | 1-3 mm    | No       | High
+EEG          | Electrical brain waves  | 1 ms     | ~cm       | No       | Low
+MEG          | Magnetic brain fields   | 1 ms     | ~mm       | No       | High
+PET          | Glucose metabolism      | Minutes  | ~5 mm     | Yes (tracer) | High
+SPECT        | Blood flow (tracer)     | Minutes  | ~10 mm    | Yes (tracer) | Med
+fNIRS        | Blood oxygenation (optical) | 1 sec | ~1 cm    | No       | Low
+ECoG         | Electrical (on cortex)  | 1 ms     | ~mm       | Yes (surgery) | High
+Single-unit  | Single neuron spikes    | 1 ms     | Single cell | Yes (electrode) | High
+
+KEY DIFFERENCES:
+
+fMRI vs EEG:
+- fMRI: excellent spatial resolution, poor temporal resolution
+- EEG: poor spatial resolution, excellent temporal resolution
+- Many researchers combine both (EEG-fMRI) to get the best of both
+- EEG is much cheaper and can be used outside the lab
+- fMRI requires participants to remain still; EEG does not
+
+fMRI vs PET:
+- PET uses radioactive tracers injected into blood — fMRI uses no tracers
+- PET can measure specific neurotransmitter systems (dopamine, serotonin)
+- fMRI measures general neural activity via blood flow
+- PET has worse temporal resolution than fMRI
+- fMRI is now preferred for most cognitive/emotion research
+
+fMRI vs fNIRS:
+- fNIRS (functional near-infrared spectroscopy) uses light to measure BOLD-like signal
+- fNIRS is portable, cheap, and works during movement
+- fNIRS only measures cortical surface (cannot reach deep brain structures)
+- fMRI has far better spatial coverage of the whole brain
+- fNIRS is used for baby brain imaging, Alzheimer's patient motorcycling studies
+
+fMRI vs SPECT:
+- SPECT also uses a radioactive tracer
+- SPECT has lower resolution than fMRI
+- SPECT is used clinically for epilepsy, dementia diagnosis
+- fMRI preferred for research, SPECT still used clinically
+
+================================================================================
+SECTION 5: BRAIN ANATOMY — KEY REGIONS
+================================================================================
+
+The human brain contains ~86 billion neurons and roughly the same number of
+glial cells. It is organized into hierarchical levels of structure.
+
+MAJOR DIVISIONS:
+
+1. CEREBRAL CORTEX (the outer folded surface)
+   - Frontal Lobe: planning, decision-making, personality, motor control
+   - Parietal Lobe: spatial awareness, sensory integration, attention
+   - Temporal Lobe: memory, language, hearing, face recognition
+   - Occipital Lobe: visual processing
+
+2. SUBCORTICAL STRUCTURES (beneath the cortex)
+   - Amygdala: emotion, fear, threat detection
+   - Hippocampus: memory formation and retrieval
+   - Thalamus: sensory relay station
+   - Basal Ganglia: reward, habit, motor control
+   - Hypothalamus: autonomic regulation, hormones
+   - Cerebellum: motor coordination, timing, some cognition
+
+3. BRAINSTEM
+   - Midbrain: visual/auditory reflexes, dopamine production
+   - Pons: sleep, breathing, facial expression
+   - Medulla: heart rate, blood pressure, breathing
+
+CORTICAL LAYERING:
+The cortex is approximately 2-4mm thick and contains 6 layers of neurons.
+Different layers have different input/output connections:
+- Layer 4: receives sensory input from thalamus
+- Layer 5: sends output to spinal cord and brainstem
+- Layer 6: sends output back to thalamus (feedback loop)
+
+HEMISPHERIC SPECIALIZATION:
+- Left hemisphere: language production (Broca's area), language comprehension
+  (Wernicke's area), analytical reasoning, sequential processing
+- Right hemisphere: spatial processing, facial recognition, emotional prosody,
+  holistic reasoning, creativity
+
+The two hemispheres are connected by the corpus callosum — a thick band of
+~200 million nerve fibers enabling left-right communication.
+
+LOBES IN DETAIL:
+
+FRONTAL LOBE:
+- Primary Motor Cortex (precentral gyrus): controls voluntary movement
+- Premotor Cortex: motor planning
+- Prefrontal Cortex (PFC): executive functions (see Section 6)
+- Broca's Area (left IFG): speech production
+- Anterior Cingulate Cortex (ACC): error detection, conflict monitoring
+
+PARIETAL LOBE:
+- Primary Somatosensory Cortex: touch, pain, temperature
+- Inferior Parietal Lobule: multisensory integration
+- Superior Parietal Lobule: spatial attention and manipulation
+- Angular Gyrus: language, number processing
+
+TEMPORAL LOBE:
+- Primary Auditory Cortex: sound processing
+- Superior Temporal Sulcus (STS): voice, biological motion, social cues
+- Fusiform Gyrus: face recognition (fusiform face area, FFA)
+- Parahippocampal Gyrus: scene and place recognition
+- Hippocampus: memory
+- Amygdala: emotion
+
+OCCIPITAL LOBE:
+- Primary Visual Cortex (V1): basic visual processing
+- V2, V3, V4: color, orientation, form
+- MT/V5: motion processing
+- Lateral Occipital Complex: object recognition
+
+================================================================================
+SECTION 6: BRAIN REGIONS AND THEIR FUNCTIONS
+================================================================================
+
+This section provides deep detail on each key brain region relevant to emotion,
+intent, psychology, and neural pathway AI research.
+
+--- AMYGDALA ---
+Location: Medial temporal lobe (bilateral, one in each hemisphere)
+Size: ~1.5-2cm, almond-shaped
+Subregions: Basolateral amygdala (BLA), Central amygdala (CeA), Medial amygdala
+
+PRIMARY FUNCTIONS:
+- Fear detection and fear conditioning
+- Threat assessment — rapidly evaluates if something is dangerous
+- Emotional salience — flags emotionally important events for memory
+- Anxiety and stress responses
+- Social cognition — reading emotional faces
+- Decision-making under uncertainty/ambiguity
+- Modulation of memory consolidation (emotional events are remembered better)
+
+fMRI FINDINGS IN THE AMYGDALA:
+- Responds strongly to fearful faces within 170ms
+- Activates to angry, disgusted, and surprised faces
+- BOLD signal correlates with the intensity of perceived facial emotion
+- Encodes both categorical emotions (fear vs. joy) and continuous dimensions
+  (arousal, valence)
+- Amygdala-PFC connectivity underlies emotion regulation
+- In PTSD: hyperactive amygdala, hypoactive PFC
+- In depression: abnormal amygdala reactivity and resting state connectivity
+- Bilateral amygdala damage: patients cannot recognize fear from faces
+- In autism spectrum disorder (ASD): reduced amygdala response to social stimuli
+
+AMYGDALA CONNECTIVITY:
+- Receives input from: thalamus (fast, low-res), cortex (slow, high-res),
+  hippocampus, sensory areas
+- Sends output to: hypothalamus (autonomic responses), brainstem (freeze/flight),
+  PFC (emotional regulation), nucleus accumbens (reward/motivation)
+
+--- PREFRONTAL CORTEX (PFC) ---
+Location: Anterior frontal lobe
+Subregions: dlPFC, vmPFC, mPFC, OFC, vlPFC, ACC
+
+DORSOLATERAL PFC (dlPFC):
+- Working memory
+- Cognitive control and flexibility
+- Planning and reasoning
+- Emotion regulation through cognitive reappraisal
+- Suppression of amygdala responses (top-down control)
+- Reduced activity in depression
+
+VENTROMEDIAL PFC (vmPFC):
+- Emotional valuation — how good or bad something is
+- Extinction of fear (suppresses amygdala after threat is gone)
+- Self-referential thought
+- Integration of emotion and decision-making
+- Damage causes: poor decisions despite intact reasoning (Phineas Gage case)
+
+ORBITOFRONTAL CORTEX (OFC):
+- Reward value encoding
+- Emotional learning and reversal
+- Social behavior and inhibition
+- Encodes expected outcomes
+- Implicated in addiction, OCD, and impulsive behavior
+
+ANTERIOR CINGULATE CORTEX (ACC):
+- Dorsal ACC: conflict monitoring, error detection, cognitive control
+- Subgenual ACC (sgACC): emotional regulation, sadness, depression
+  (most consistently implicated in major depressive disorder)
+- Rostral ACC: emotion-cognition interface
+
+MEDIAL PFC (mPFC):
+- Default mode network hub
+- Self-referential processing ("thinking about yourself")
+- Theory of mind (understanding what others think/feel)
+- Perspective taking
+
+--- HIPPOCAMPUS ---
+Location: Medial temporal lobe, adjacent to amygdala
+Shape: Curved, seahorse-like structure (hippocampus = Greek for seahorse)
+
+FUNCTIONS:
+- Episodic memory formation (remembering specific events)
+- Spatial navigation (place cells and grid cells)
+- Pattern completion (recognizing incomplete memories)
+- Emotion-memory integration (with amygdala)
+- Context encoding — memories are always encoded with context
+
+fMRI FINDINGS:
+- Activates strongly during encoding of new memories
+- Activates during retrieval of episodic memories
+- Hippocampal-prefrontal connectivity underlies working memory
+- Represents emotion categories in a map-like structure
+- Grid-like codes in entorhinal cortex represent emotional "space" (valence/arousal)
+- In Alzheimer's: hippocampus is first structure to show atrophy
+- In PTSD: reduced hippocampal volume from chronic stress
+- In depression: hippocampal neurogenesis is impaired
+
+--- INSULA ---
+Location: Deep within the lateral sulcus (buried under frontal/temporal cortex)
+Subregions: Anterior insula, Posterior insula
+
+FUNCTIONS:
+- Interoception — sensing your own body states (heartbeat, gut feelings)
+- Disgust (primary emotion associated with insula)
+- Empathy — feeling others' pain activates the insula
+- Pain processing
+- Social emotions (guilt, shame, embarrassment)
+- Awareness of emotional bodily sensations
+- Craving and addiction
+
+fMRI FINDINGS:
+- Anterior insula: higher-order emotional integration
+- Posterior insula: basic sensory interoception
+- Bilateral insula damage: loss of ability to feel disgust, impaired empathy
+- Hyperactive in anxiety disorders, PTSD
+- Activates during emotional experiences across all modalities
+
+--- ANTERIOR CINGULATE CORTEX (ACC) ---
+(see also PFC section above)
+
+The ACC is a critical hub bridging emotional and cognitive processing.
+It is shaped like a collar around the corpus callosum.
+
+DORSAL ACC (dACC):
+- Conflict monitoring — detects when two responses compete
+- Error detection — fires when you make a mistake
+- Attention allocation
+- Cognitive effort
+
+SUBGENUAL ACC (sgACC, Brodmann Area 25):
+- Most consistently implicated in depression
+- Overactive in major depressive disorder
+- Deep brain stimulation (DBS) of sgACC is a treatment for treatment-resistant
+  depression
+- Regulates mood, emotional tone
+- Projects to brainstem autonomic centers
+
+--- STRIATUM AND BASAL GANGLIA ---
+Components: Caudate nucleus, Putamen, Nucleus Accumbens (NAcc), Globus Pallidus
+
+NUCLEUS ACCUMBENS (NAcc):
+- Core reward circuit structure
+- Activated by: food, sex, money, social reward, music
+- Dopamine release here signals reward prediction
+- Hypoactive in depression (anhedonia — inability to feel pleasure)
+- Hyperactive in addiction
+
+CAUDATE NUCLEUS:
+- Habit formation
+- Goal-directed action
+- Implicated in OCD (caudate overactivity)
+
+PUTAMEN:
+- Motor learning
+- Procedural memory (learning skills)
+- Reward and punishment learning
+
+--- THALAMUS ---
+Location: Center of brain, bilateral
+Functions: Sensory relay station, consciousness gating, attention regulation
+
+All sensory information (except smell) passes through the thalamus before
+reaching the cortex. The thalamus acts as a gatekeeper — during sleep and
+anesthesia, thalamic gating shuts down, suppressing conscious awareness.
+
+Relevant nuclei:
+- Pulvinar: attention, visual salience, threat detection
+- Mediodorsal: prefrontal-emotion connections
+- Anterior: memory, limbic connections
+
+--- FUSIFORM GYRUS ---
+Location: Ventral temporal lobe (inferior surface)
+
+FUNCTIONS:
+- Face recognition (Fusiform Face Area, FFA)
+- Word form recognition (Visual Word Form Area, VWFA)
+- Object recognition
+- Expertise effects (chess experts activate FFA for chess positions)
+
+KEY fMRI FINDING (Haxby 2001):
+The Haxby study (img_001 in this dataset) showed that the ventral temporal cortex
+has a distributed but partially overlapping code for different objects.
+The FFA responds specifically to faces but also responds (less) to other objects.
+Odd/even run reliability correlations of r=0.81-0.87 show this is a robust effect.
+
+================================================================================
+SECTION 7: NEURAL PATHWAYS — HOW REGIONS CONNECT
+================================================================================
+
+The brain is not a collection of isolated regions — it is a network of networks.
+Understanding connectivity is as important as understanding individual regions.
+
+MAJOR EMOTION-RELATED PATHWAYS:
+
+1. THE FEAR PATHWAY (LeDoux)
+   Thalamus → Amygdala (fast, direct — the "low road")
+   Thalamus → Cortex → Amygdala (slow, detailed — the "high road")
+   
+   The low road: ~12ms thalamus-to-amygdala, rapid threat detection
+   The high road: ~100ms, more accurate but slower threat assessment
+   
+   Amygdala → Hypothalamus → Autonomic nervous system (fight/flight response)
+   Amygdala → Periaqueductal gray → Freezing behavior
+   Amygdala → Nucleus accumbens → Avoidance motivation
+
+2. THE EMOTION REGULATION PATHWAY
+   PFC (dlPFC/vmPFC) → Amygdala (inhibitory top-down control)
+   
+   When you regulate an emotion (reappraise, suppress):
+   - dlPFC and vlPFC activate strongly
+   - Amygdala BOLD signal decreases
+   - This PFC→Amygdala inhibition is the neural basis of emotional control
+   - This pathway is weakened in PTSD, depression, and anxiety disorders
+
+3. THE REWARD PATHWAY (Mesolimbic/Mesocortical)
+   Ventral Tegmental Area (VTA) → Nucleus Accumbens (mesolimbic)
+   VTA → Prefrontal Cortex (mesocortical)
+   
+   Dopamine neurons in VTA fire to:
+   - Reward prediction signals (not just reward itself)
+   - Positive surprise (better than expected)
+   - They STOP firing to negative prediction errors (worse than expected)
+   
+   This dopamine signaling underlies learning, motivation, and addiction.
+
+4. THE MEMORY-EMOTION PATHWAY
+   Amygdala → Hippocampus (emotional memory modulation)
+   
+   Emotional arousal (amygdala activation) enhances memory encoding in
+   the hippocampus. This is why you remember emotional events better than
+   neutral ones. Stress hormones (cortisol, adrenaline) mediate this effect.
+   
+   Hippocampus → Prefrontal Cortex (memory retrieval and working memory)
+
+5. THE DEFAULT MODE NETWORK (DMN)
+   Key nodes: mPFC, posterior cingulate cortex (PCC), angular gyrus,
+   hippocampus, lateral temporal cortex
+   
+   The DMN is active when you are:
+   - Not doing a task (daydreaming, mind-wandering)
+   - Thinking about yourself (self-referential thought)
+   - Thinking about others (social cognition, theory of mind)
+   - Remembering the past or imagining the future
+   
+   The DMN DEACTIVATES during externally-focused tasks.
+   Failure to properly deactivate the DMN is linked to:
+   - Depression (rumination)
+   - Schizophrenia (confused self/other boundaries)
+   - ADHD (inability to suppress mind-wandering)
+
+6. THE SALIENCE NETWORK
+   Key nodes: Anterior insula, dACC, amygdala, thalamus
+   
+   Function: Identifies the most important stimulus in the environment
+   and switches brain resources toward it.
+   
+   Works closely with the executive control network (ECN) and DMN.
+   The salience network decides: "Is this important enough to stop what
+   I'm doing and pay attention to it?"
+
+7. THE EXECUTIVE CONTROL NETWORK (ECN)
+   Key nodes: dlPFC, inferior parietal cortex, dorsal ACC
+   
+   Function: Top-down cognitive control, working memory, planning,
+   task maintenance, inhibition of irrelevant responses.
+
+STRUCTURAL CONNECTIVITY (WHITE MATTER TRACTS):
+While fMRI measures functional connectivity, structural connectivity is
+carried by white matter tracts — bundles of myelinated axons.
+
+Key tracts:
+- Uncinate fasciculus: connects OFC/frontal lobe to temporal lobe (emotion)
+- Cingulum bundle: connects ACC to hippocampus and PCC (memory/emotion)
+- Superior longitudinal fasciculus: connects frontal and parietal lobes
+- Inferior longitudinal fasciculus: connects occipital to temporal lobe (vision)
+- Corpus callosum: connects left and right hemispheres
+
+================================================================================
+SECTION 8: EMOTION DETECTION WITH fMRI
+================================================================================
+
+Detecting emotions from fMRI data is one of the most active areas of
+neuroscience and AI research. Here is the complete picture.
+
+THEORETICAL FRAMEWORKS FOR EMOTION:
+
+1. BASIC EMOTIONS THEORY (Ekman, 1972)
+   - 6-7 universal, biologically hardwired emotions
+   - Fear, Joy, Sadness, Anger, Disgust, Surprise (+Contempt)
+   - Each emotion has: distinct facial expression, physiology, brain region
+   - Cross-cultural, even blind individuals show same expressions
+   - Most traditional fMRI emotion paradigms use these categories
+
+2. DIMENSIONAL MODEL (Russell, 1980)
+   - Emotions exist on two continuous dimensions:
+     * Valence: negative (unpleasant) to positive (pleasant)
+     * Arousal: calm/low activation to excited/high activation
+   - Any emotion can be mapped to a point in this 2D space
+   - Fear: high arousal, negative valence
+   - Joy: high arousal, positive valence
+   - Sadness: low arousal, negative valence
+   - Calm: low arousal, positive valence
+   - fMRI BOLD signals correlate with both valence and arousal independently
+
+3. CONSTRUCTED EMOTION THEORY (Barrett, 2017)
+   - Emotions are not hardwired — they are constructed by the brain
+   - Core affect (valence + arousal) + conceptual knowledge = emotion experience
+   - Challenges the idea of specific "emotion brain regions"
+   - Predicts distributed, context-dependent patterns rather than fixed regions
+   - Supported by some fMRI meta-analyses showing large overlap between emotions
+
+TASKS USED TO ELICIT EMOTIONS IN fMRI:
+- Viewing emotional images (IAPS: International Affective Picture System)
+- Viewing emotional faces (fearful, angry, happy, neutral, sad)
+- Watching emotional film clips (joy, sadness, fear, disgust)
+- Listening to emotional music or speech
+- Reading emotional words or sentences
+- Recalling emotional memories
+- Anticipating rewards or punishments
+- Social rejection/acceptance paradigms
+
+HOW EMOTION IS DETECTED FROM BOLD SIGNALS:
+
+METHOD 1 — REGION OF INTEREST (ROI) ANALYSIS:
+- Draw a mask around a specific brain region (e.g., amygdala)
+- Average BOLD signal within that region
+- Compare signal between emotion conditions
+- Simple, hypothesis-driven, low statistical power for subtle effects
+- Most common in clinical studies
+
+METHOD 2 — WHOLE BRAIN GLM:
+- Model the BOLD time series using General Linear Model
+- Each emotion condition is a regressor
+- T-maps or F-maps show which voxels significantly differ between conditions
+- FDR or FWE correction for multiple comparisons (~200,000 voxels)
+
+METHOD 3 — MVPA (Multivariate Pattern Analysis):
+- Train a classifier on distributed patterns of BOLD activation
+- The pattern across hundreds/thousands of voxels classifies the emotion
+- Much more sensitive than ROI analysis
+- Can decode emotions that show similar average activation but different patterns
+- Common classifiers: SVM, LDA, logistic regression
+
+METHOD 4 — REPRESENTATIONAL SIMILARITY ANALYSIS (RSA):
+- Compute similarity matrix of brain patterns across all emotions
+- Compare this brain similarity matrix to theoretical models
+- Answers: "Does the brain represent emotions like the basic emotions model
+  predicts? Or like the dimensional model?"
+
+METHOD 5 — DYNAMIC FUNCTIONAL CONNECTIVITY (DFC):
+- Instead of static connectivity, measures how connections CHANGE over time
+- Emotions evolve dynamically — DFC captures this
+- Maps which networks are coupled during different emotional states
+- Used in NeuroEmo dataset (Indian fMRI emotion recognition)
+
+================================================================================
+SECTION 9: THE 8 PRIMARY EMOTIONS — BRAIN MAPPING
+================================================================================
+
+--- FEAR ---
+Primary regions: Amygdala (bilateral), Insula, dACC, PAG
+Supporting regions: Thalamus (pulvinar), Hippocampus, dlPFC
+
+Brain signatures:
+- Amygdala: strongest consistent activation across ALL fear studies
+- BLA (basolateral amygdala): processes fear learning
+- CeA (central amygdala): triggers fear expression (freeze, flight, fight)
+- Insula: bodily fear sensations (heart pounding, sweating)
+- PAG: freezing behavior, panic
+- Hippocampus: contextual fear (fearful in specific places)
+
+Intent states associated: avoidance, escape, freeze, hypervigilance
+Arousal: high | Valence: negative
+Psychology tags: threat_response, fear_conditioning, anxiety, phobia, PTSD
+
+--- ANGER ---
+Primary regions: Amygdala, OFC, Anterior insula, dlPFC
+Supporting regions: ACC, Hypothalamus, Striatum
+
+Brain signatures:
+- Amygdala: activates to anger-related stimuli and angry faces
+- OFC: frustration and reward blocking activates lateral OFC
+- Anterior insula: strong anger activation
+- ACC: conflict and anger regulation
+- Hypothalamus: fight response, aggression
+
+Intent states associated: approach-aggression, confrontation, dominance assertion
+Arousal: high | Valence: negative
+Psychology tags: aggression, frustration, hostility, threat_display
+
+--- SADNESS ---
+Primary regions: Subgenual ACC (sgACC), Insula, Amygdala
+Supporting regions: Medial PFC, Hippocampus, Thalamus
+
+Brain signatures:
+- sgACC (Brodmann Area 25): most consistently activated in sadness and depression
+- Insula: bodily heaviness, fatigue associated with sadness
+- Amygdala: responds to sad faces and sad memories
+- Medial PFC: rumination, self-focused sad thoughts
+- Reduced striatal activity (loss of motivation/pleasure)
+
+Intent states associated: withdrawal, help-seeking, rumination, disengagement
+Arousal: low | Valence: negative
+Psychology tags: depression, grief, loss, anhedonia, rumination
+
+--- JOY / HAPPINESS ---
+Primary regions: Nucleus Accumbens, Ventral Striatum, Medial PFC, OFC
+Supporting regions: Cerebellum, Amygdala (positive), Insula
+
+Brain signatures:
+- Ventral striatum: reward anticipation and pleasure
+- OFC: processing pleasant rewards
+- Amygdala: responds to positive stimuli (not just negative)
+- Medial PFC: positive self-relevant thoughts
+- ACC: positive affect regulation
+
+Intent states associated: approach, sharing, social bonding, exploration
+Arousal: medium-high | Valence: positive
+Psychology tags: reward, hedonia, positive_affect, gratitude, love
+
+--- DISGUST ---
+Primary regions: Anterior Insula (bilateral), Basal Ganglia, OFC
+Supporting regions: Amygdala, ACC
+
+Brain signatures:
+- Anterior insula: MOST reliably activated by disgust — core disgust region
+- Basal Ganglia: disgust-related avoidance behavior
+- OFC: moral disgust (violations of social norms)
+- The insula is so strongly linked to disgust that insula damage
+  significantly impairs the ability to recognize disgusted faces and expressions
+
+Intent states associated: avoidance, rejection, withdrawal, contamination concerns
+Arousal: medium | Valence: negative
+Psychology tags: disgust_sensitivity, contamination_fear, moral_disgust, OCD
+
+--- SURPRISE ---
+Primary regions: Bilateral amygdala, Anterior PFC, Inferior Parietal Cortex
+Supporting regions: Bilateral insula, Superior temporal sulcus (STS)
+
+Brain signatures:
+- Amygdala: responds to unexpected stimuli regardless of valence
+- Anterior PFC: processes novel, unexpected information
+- Inferior parietal: reorienting attention to surprising events
+- STS: detecting unexpected changes in social signals
+- Broadly activates attention and salience networks
+
+Intent states associated: orientation, exploration, attention reallocation
+Arousal: high | Valence: neutral (depends on whether surprise is positive or negative)
+Psychology tags: novelty_detection, attentional_capture, prediction_error
+
+--- CALM / CONTENTMENT ---
+Primary regions: Default Mode Network (mPFC, PCC), vlPFC, Reduced amygdala
+Supporting regions: Insula (interoception), Cerebellum
+
+Brain signatures:
+- DMN more active during calm states (default mode engagement)
+- Amygdala BOLD signal reduced compared to emotional states
+- vlPFC: emotion regulation maintaining calm
+- Insula: peaceful interoception
+- Slow oscillatory activity in frontal regions
+
+Intent states associated: rest, open exploration, receptivity
+Arousal: low | Valence: positive
+Psychology tags: emotion_regulation, mindfulness, relaxation, parasympathetic
+
+--- ANXIETY ---
+Primary regions: Amygdala, Insula, dACC, Bed Nucleus of Stria Terminalis (BNST)
+Supporting regions: Hippocampus, dlPFC, Thalamus
+
+Brain signatures:
+- BNST: sustained, diffuse anxiety (distinct from phasic fear)
+- Amygdala: threat detection component of anxiety
+- Insula: bodily anxiety sensations (chest tightness, nausea)
+- dACC: worry and rumination
+- Hippocampus: contextual anxiety (anxious in specific situations)
+- dlPFC: reduced (impaired cognitive control in anxiety)
+
+Intent states associated: avoidance, safety-seeking, hypervigilance, worry
+Arousal: medium-high | Valence: negative
+Psychology tags: GAD, social_anxiety, panic_disorder, worry, avoidance
+
+================================================================================
+SECTION 10: INTENT DETECTION WITH fMRI
+================================================================================
+
+Intent detection — understanding what someone is going to do before they do it —
+is one of the most exciting frontiers of brain-computer interface and AI research.
+
+WHAT IS NEURAL INTENT ENCODING?
+
+The brain encodes intentions (plans for action) in the prefrontal cortex before
+any behavior occurs. These preparatory neural patterns can be decoded from fMRI.
+
+KEY BRAIN REGIONS FOR INTENT:
+
+Pre-Supplementary Motor Area (pre-SMA):
+- Prepares voluntary movements before execution
+- Activity here predicts when a person will move (Libet experiments)
+- Contains "when to act" information
+
+Anterior PFC (aPFC) / Rostral PFC:
+- Prospective memory — remembering to do something in the future
+- Holds intentions in mind ("I'm planning to do X later")
+- Multitasking — maintaining multiple intentions simultaneously
+
+dlPFC:
+- Working memory for intentions
+- Goal maintenance over time
+- Planning complex multi-step actions
+
+CATEGORIES OF INTENT ENCODED IN fMRI:
+
+1. Motor Intent (movement planning)
+   - Region: pre-SMA, primary motor cortex, posterior parietal
+   - Can be decoded: which finger to move, which direction to move
+   - Applications: brain-computer interfaces for paralyzed patients
+
+2. Decision Intent (choosing between options)
+   - Region: OFC, vmPFC, dlPFC, striatum
+   - Encodes: value of each option, predicted outcome
+   - Decision can be "read" from vmPFC/OFC patterns before the choice is reported
+
+3. Attentional Intent (planning to attend to something)
+   - Region: Frontal Eye Fields (FEF), Parietal cortex, dlPFC
+   - Predicts where a person will look next
+
+4. Social Intent (what you plan to do to/with another person)
+   - Region: Temporoparietal Junction (TPJ), mPFC, STS
+   - Theory of mind networks track what others plan and intend
+
+5. Goal-Directed Intent (wanting to achieve a goal)
+   - Region: OFC (value), Caudate (goal-directed), Putamen (habitual)
+   - Distinction: goal-directed vs. habitual behavior maps to different striatal regions
+
+INTENT-EMOTION INTERACTION:
+Emotions powerfully modulate intent:
+- Fear → avoidance intent (amygdala drives flight response)
+- Anger → approach-aggression intent (OFC frustration → approach behavior)
+- Desire/craving → approach intent (ventral striatum dopamine)
+- Disgust → avoidance intent (insula-driven rejection)
+
+================================================================================
+SECTION 11: PSYCHOLOGY CLASSIFICATION WITH fMRI
+================================================================================
+
+fMRI allows classification of psychological states, traits, and processes.
+
+COGNITIVE STATES:
+
+Attention:
+- Dorsal Attention Network: TPJ, FEF — voluntary, top-down attention
+- Ventral Attention Network: right TPJ, IFG — stimulus-driven attention
+- Attention to faces activates right-lateralized networks
+- ADHD: reduced dorsal attention network function
+
+Working Memory:
+- dlPFC: holds information online
+- Parietal cortex: spatial working memory component
+- Capacity: ~4 items (+/- 1) — "magical number" (Miller, 1956)
+- Load-dependent activation: more items = more dlPFC BOLD signal
+
+Long-Term Memory:
+- Encoding: hippocampus, parahippocampal cortex, amygdala (emotional)
+- Retrieval: hippocampus, prefrontal cortex (monitoring/verification)
+- Semantic memory: lateral temporal cortex, angular gyrus
+- Episodic memory: medial temporal lobe, right frontal
+
+Language:
+- Broca's area (left IFG): speech production, syntactic processing
+- Wernicke's area (left STG): language comprehension
+- Superior temporal sulcus: voice processing
+- Angular gyrus: reading, semantic integration
+- Damage to Broca's: Broca's aphasia (telegraphic speech, intact comprehension)
+- Damage to Wernicke's: Wernicke's aphasia (fluent but meaningless speech)
+
+PSYCHOLOGICAL TRAIT CLASSIFICATION:
+
+Introversion vs. Extraversion:
+- Extroverts: stronger reward network responses to social stimuli
+- Introverts: stronger default mode and frontal responses
+
+Neuroticism:
+- Higher neuroticism: larger amygdala responses to negative stimuli
+- Stronger connectivity between amygdala and dACC
+- Associated with anxiety disorders
+
+Empathy:
+- Cognitive empathy: mPFC, TPJ (understanding others' thoughts)
+- Affective empathy: anterior insula, ACC (feeling others' feelings)
+- Mirror neuron system: IFG, premotor cortex
+
+Impulsivity:
+- Reduced OFC volume and function
+- Reduced dlPFC control
+- Stronger ventral striatum responses to immediate rewards
+- Reduced ability to delay gratification
+
+================================================================================
+SECTION 12: PSYCHIATRIC DISORDERS AND fMRI
+================================================================================
+
+--- MAJOR DEPRESSIVE DISORDER (MDD) ---
+Key fMRI findings:
+- Hyperactive sgACC (subgenual ACC, BA25): overactive resting state activity
+- Hypoactive dlPFC: impaired cognitive control, negative bias
+- Reduced ventral striatum response to reward (anhedonia)
+- Increased amygdala reactivity to negative stimuli
+- Abnormal DMN connectivity (cannot stop rumination)
+- Hippocampal atrophy with chronic depression
+- Treatment (SSRIs, CBT): reduces sgACC activity, increases dlPFC
+
+--- POST-TRAUMATIC STRESS DISORDER (PTSD) ---
+Key fMRI findings:
+- Hyperactive amygdala: exaggerated fear response
+- Hypoactive vmPFC: cannot extinguish fear
+- Hypoactive hippocampus: context gating impaired (fear generalizes)
+- Hyperactive dACC: heightened conflict and threat monitoring
+- Reduced PFC-amygdala connectivity
+- Trauma memories activate different neural patterns than normal memories
+
+--- ANXIETY DISORDERS ---
+Key fMRI findings:
+- Amygdala hyperreactivity (especially to threat cues)
+- Insula hyperactivity (bodily anxiety)
+- Reduced PFC regulation of amygdala
+- Specific phobia: strong visual cortex + amygdala response to phobic objects
+- Social anxiety: exaggerated response to negative social evaluation (faces, criticism)
+
+--- SCHIZOPHRENIA ---
+Key fMRI findings:
+- Reduced activation in dlPFC during working memory tasks
+- Abnormal prediction error signaling in striatum
+- Disrupted connectivity between frontal and temporal lobes
+- Hyperactive dopamine signaling in striatum
+- Aberrant salience attribution (salience network dysfunction)
+- DMN not properly deactivated during tasks
+
+--- AUTISM SPECTRUM DISORDER (ASD) ---
+Key fMRI findings:
+- Reduced response to social stimuli in STS, FFA
+- Reduced amygdala response to emotional faces
+- Atypical connectivity (local over-connectivity, long-range under-connectivity)
+- TPJ reduced activation (impaired theory of mind)
+- Enhanced visual cortex responses to objects/patterns
+
+--- OBSESSIVE-COMPULSIVE DISORDER (OCD) ---
+Key fMRI findings:
+- Hyperactive caudate nucleus (basal ganglia)
+- Hyperactive orbitofrontal cortex (OFC)
+- Reduced lateral PFC function
+- OFC-caudate-thalamic loops stuck in "on" position
+- SSRIs and CBT reduce OFC-caudate hyperactivity
+
+--- ADDICTION ---
+Key fMRI findings:
+- Blunted ventral striatum (nucleus accumbens) response to natural rewards
+- Exaggerated craving-related activation to drug cues
+- Reduced dlPFC control (increased impulsivity)
+- Strong insula activation during craving (interoceptive craving signals)
+- Disrupted dopamine signaling in reward circuits
+
+================================================================================
+SECTION 13: fMRI DATA PREPROCESSING PIPELINE
+================================================================================
+
+Raw fMRI data cannot be analyzed directly — it must be preprocessed to remove
+noise and prepare it for statistical analysis.
+
+STANDARD PREPROCESSING STEPS:
+
+STEP 1 — DICOM TO NIfTI CONVERSION
+Raw scanner data is in DICOM format. This must be converted to NIfTI (.nii.gz)
+for analysis. Tool: dcm2niix (free, open-source).
+
+STEP 2 — SLICE TIMING CORRECTION
+fMRI volumes are acquired slice by slice (not simultaneously).
+Different brain slices are collected at different times within a TR.
+This step corrects for this temporal offset so all slices appear simultaneous.
+Important for: event-related designs with fast events
+
+STEP 3 — MOTION CORRECTION / REALIGNMENT
+Even small head movements (<1mm) contaminate fMRI data.
+Algorithm estimates how much the head moved between each volume and mathematically
+corrects the data to align all volumes to a reference volume.
+Motion parameters (6 DOF: 3 translation, 3 rotation) are saved as confounds.
+Participants with >2-3mm of motion are often excluded.
+
+STEP 4 — FIELD MAP CORRECTION (optional)
+Magnetic field inhomogeneities cause geometric distortions in EPI images.
+Field maps can correct these distortions.
+
+STEP 5 — COREGISTRATION
+The functional images are aligned to the participant's own structural T1 image.
+This allows accurate localization of functional activation in brain anatomy.
+
+STEP 6 — NORMALIZATION TO STANDARD SPACE
+Individual brains differ in size and shape.
+Normalization warps each participant's brain to a standard template (MNI space or
+Talairach space) so data can be compared across participants.
+MNI152: Montreal Neurological Institute template (N=152 brains averaged)
+
+STEP 7 — SPATIAL SMOOTHING
+A Gaussian kernel is applied to smooth the data spatially.
+- Increases signal-to-noise ratio (SNR)
+- Accounts for remaining registration errors
+- Makes data more normally distributed
+- Typical kernel: 5-8mm FWHM (full width at half maximum)
+- Trade-off: smoothing reduces spatial resolution
+
+NOTE: For MVPA analysis, minimal smoothing is preferred to preserve
+distributed patterns that carry classification-relevant information.
+
+STEP 8 — TEMPORAL FILTERING
+- High-pass filter: removes slow scanner drift (typical cutoff: 128s period)
+- Low-pass filter: sometimes applied to remove high-frequency noise
+- Band-pass filter: combined (used in resting-state fMRI)
+
+STEP 9 — CONFOUND REGRESSION
+Remove noise sources from the time series:
+- Motion parameters (6 DOF + derivatives = 24 parameters)
+- White matter signal (not neural)
+- CSF signal (not neural)
+- Global signal (controversial in emotion research)
+- ICA-based noise components (aCompCor, FIX)
+
+STEP 10 — BRAIN MASKING
+Remove non-brain voxels (skull, eyes, air) from analysis.
+Reduces computational load and multiple comparison burden.
+
+QUALITY CONTROL:
+- Visual inspection of each preprocessing step
+- Check motion parameters (should be <2mm translation, <2° rotation)
+- Check signal-to-noise ratio (temporal SNR > 100 preferred)
+- Check registration quality
+- Framewise displacement (FD) and DVARS metrics for motion assessment
+
+TOOLS FOR PREPROCESSING:
+- FSL (FEAT, MELODIC): most widely used, free
+- SPM12: MATLAB-based, widely used in Europe
+- fMRIPrep: automated, standardized, state-of-the-art (recommended)
+- AFNI: comprehensive, free
+- Nipype: Python-based workflow manager
+
+================================================================================
+SECTION 14: ANALYSIS METHODS — GLM AND MVPA
+================================================================================
+
+--- GENERAL LINEAR MODEL (GLM) ---
+
+The GLM is the classical statistical approach to fMRI analysis.
+
+CONCEPT:
+At each voxel, the BOLD time series is modeled as a linear combination of
+predictors (regressors) convolved with the hemodynamic response function (HRF).
+
+Y = X * β + ε
+
+Where:
+- Y = BOLD time series at each voxel (measured)
+- X = design matrix (task conditions convolved with HRF)
+- β = parameter estimates (regression coefficients)
+- ε = residual noise
+
+STEPS:
+1. Create design matrix with task timing (stimulus onset, duration)
+2. Convolve task regressors with canonical HRF
+3. Include confound regressors (motion, physiological noise)
+4. Fit the model to each voxel's time series
+5. Compute contrast maps (e.g., Fear > Rest, or Fear > Happiness)
+6. Apply statistical threshold with correction for multiple comparisons
+
+STATISTICAL THRESHOLDING:
+- Voxel-level threshold: usually p < 0.001 uncorrected
+- Cluster-level correction: FDR (False Discovery Rate) or FWE (Family-Wise Error)
+- Permutation testing: non-parametric alternative
+
+SECOND-LEVEL (GROUP) ANALYSIS:
+Individual β maps are combined across participants using a second-level GLM
+to make inferences about the population level effects.
+
+LIMITATIONS OF GLM:
+- Assumes fixed, average response shape (canonical HRF)
+- Treats each voxel independently (ignores spatial patterns)
+- Cannot detect information encoded in distributed patterns
+
+--- MULTIVARIATE PATTERN ANALYSIS (MVPA) ---
+
+MVPA treats fMRI data as a pattern classification problem.
+
+CONCEPT:
+Instead of testing each voxel separately, MVPA uses the pattern ACROSS voxels
+to classify cognitive/emotional states.
+
+WORKFLOW:
+1. Extract BOLD patterns for each trial/condition (vectors of voxel values)
+2. Split data into training and test sets
+3. Train a classifier on training data
+4. Test classifier on held-out data (cross-validation)
+5. Compute accuracy (chance level = 1/N conditions)
+
+COMMON CLASSIFIERS FOR fMRI:
+- SVM (Support Vector Machine): most widely used, high accuracy
+- LDA (Linear Discriminant Analysis): fast, interpretable
+- Logistic Regression: simple, regularizable (L1/L2)
+- Random Forest: handles non-linear patterns
+- Neural Networks / Deep Learning: most flexible, needs large N
+
+CROSS-VALIDATION STRATEGIES:
+- Leave-One-Run-Out (LORO): train on N-1 runs, test on 1 run (standard)
+- Leave-One-Subject-Out (LOSO): train on N-1 subjects, test on 1 (generalization)
+- k-fold: general cross-validation
+
+FEATURE SELECTION:
+fMRI produces many more features (voxels) than samples (trials).
+This requires feature selection or dimensionality reduction:
+- ROI masking: only use voxels within a brain region of interest
+- Searchlight: move a sphere through the brain, classify at each center
+- PCA/ICA: reduce dimensionality before classification
+- Univariate feature selection: select top N most variable voxels
+
+DECODING ACCURACY INTERPRETATION:
+- Chance level: 50% (binary), 33% (3-class), 25% (4-class) etc.
+- Typical decoding accuracy for emotion from amygdala: 60-75%
+- For motor intentions: 80-95%
+- For visual stimuli: up to 99% in visual cortex
+
+================================================================================
+SECTION 15: MACHINE LEARNING FOR fMRI
+================================================================================
+
+ML has transformed fMRI analysis. Key approaches:
+
+SUPERVISED LEARNING:
+Goal: predict a label (emotion, task, disorder) from brain pattern
+Methods: SVM, Random Forest, Logistic Regression, Neural Networks
+Input: voxel-level BOLD patterns (high dimensional: ~50,000+ features)
+Challenge: curse of dimensionality (more features than samples)
+
+UNSUPERVISED LEARNING:
+Goal: discover structure in brain data without labels
+Methods: k-means clustering, hierarchical clustering, ICA, PCA, NMF
+Use cases:
+- ICA: identify independent brain networks (resting state)
+- k-means clustering: identify recurring brain states over time
+- t-SNE/UMAP: visualize high-dimensional brain patterns in 2D
+
+TRANSFER LEARNING:
+Train model on large dataset (e.g., all OpenNeuro data)
+Fine-tune on smaller target dataset (e.g., your specific population)
+Important because: single fMRI studies are too small for deep learning from scratch
+
+BRAIN DECODING (FORWARD MODEL):
+Predict brain responses from stimulus features
+e.g., which voxels respond to which aspects of an image?
+Used in: visual neuroscience, language neuroscience
+
+BRAIN ENCODING (INVERSE MODEL):
+Predict stimulus features or mental state from brain responses
+e.g., what emotion is the person feeling from their amygdala pattern?
+This is what most clinical/psychological fMRI AI aims to do
+
+DEEP LEARNING SPECIFIC APPROACHES:
+
+CNNs for fMRI:
+- 3D CNNs: treat fMRI volume as 3D image
+- 2D CNNs: slice-by-slice or time-series approach
+- Strong for visual feature extraction
+
+RNNs/LSTMs for fMRI:
+- fMRI time series has temporal dependencies
+- LSTMs capture temporal dynamics of emotional states
+- Useful for naturalistic paradigms (movie watching)
+
+Transformers for fMRI:
+- Self-attention over brain regions
+- BrainBERT: pre-trained transformer for EEG/neural signals
+- MindEye: reconstructs seen images from fMRI
+
+Graph Neural Networks (GNN):
+- Brain naturally represented as graph (regions = nodes, connectivity = edges)
+- GNNs operate on functional connectivity matrices
+- NeuroEmo uses DFC-GCNN (Dynamic Functional Connectivity + GNN)
+- Strong for capturing network-level emotion information
+
+================================================================================
+SECTION 16: DEEP LEARNING FOR BRAIN DECODING
+================================================================================
+
+Recent breakthrough models for fMRI-based brain decoding:
+
+MINDEYE (2023):
+- Reconstructs seen images from fMRI data
+- Uses diffusion models conditioned on brain activity
+- Achieves near-perfect reconstruction of viewed images
+- Trained on Natural Scenes Dataset (NSD)
+
+BRAIN DIFFUSION MODEL:
+- Generates brain activity patterns from text descriptions
+- Enables data augmentation for small fMRI datasets
+
+LARGE-SCALE PRE-TRAINING:
+- Train on thousands of fMRI sessions from OpenNeuro
+- Learn general brain representations
+- Fine-tune for specific tasks (emotion, intent, disorder)
+
+CHALLENGES FOR DEEP LEARNING IN fMRI:
+1. Small sample sizes (10-100 participants per study)
+2. High dimensionality (millions of voxels across time)
+3. High inter-subject variability (every brain is different)
+4. Scanner variability (different sites, field strengths)
+5. Motion and physiological noise
+6. Indirect measurement (BOLD ≠ spikes)
+
+SOLUTIONS:
+1. Transfer learning from large pre-trained models
+2. Dimensionality reduction (ICA, ROI masking)
+3. Hyperalignment: align individual brain patterns to common space
+4. Data harmonization: correct for scanner differences
+5. Data augmentation: temporal jitter, noise injection
+
+================================================================================
+SECTION 17: FUNCTIONAL CONNECTIVITY
+================================================================================
+
+Functional connectivity (FC) measures how different brain regions' activities
+are correlated over time — whether they work together as a network.
+
+TYPES OF FUNCTIONAL CONNECTIVITY:
+
+Seed-Based Connectivity:
+- Choose a seed region (e.g., amygdala)
+- Correlate seed time series with every other voxel
+- Creates a whole-brain map of regions that co-activate with the seed
+- Example: amygdala seeds shows positive FC with insula, ACC, OFC
+
+Independent Component Analysis (ICA):
+- Decomposes fMRI data into independent spatial components
+- Each component is a brain network active together
+- Identifies resting-state networks without a priori hypotheses
+- Common networks: DMN, salience, executive control, sensorimotor, visual
+
+Psychophysiological Interaction (PPI):
+- How does connectivity CHANGE between conditions?
+- e.g., amygdala-PFC connectivity during fear regulation vs. baseline
+- Captures task-modulated connectivity
+
+Dynamic Functional Connectivity (DFC):
+- Connectivity changes over the scan session
+- Uses sliding window or point-process analysis
+- Different brain states emerge dynamically
+- Emotions are not static — DFC captures their evolution
+
+CONNECTIVITY MATRICES:
+- Parcellate brain into N regions (100-400 regions typical)
+- Compute N×N correlation matrix (FC matrix)
+- This matrix is input for GNNs and graph-based ML
+- Used in clinical diagnosis (can classify MDD, schizophrenia from FC matrix)
+
+KEY CONNECTIVITY FINDINGS FOR EMOTION:
+
+Amygdala Connectivity:
+- Positive FC with: hippocampus, insula, ACC, mPFC, OFC
+- Negative FC with: dlPFC (executive control suppresses amygdala)
+- In PTSD: reduced amygdala-vmPFC connectivity (impaired fear extinction)
+- In depression: abnormal amygdala-sgACC connectivity
+
+Default Mode Network (DMN) in Emotion:
+- Rumination (depression): excessive DMN activation, especially sgACC
+- Mindfulness meditation: reduces sgACC-DMN connectivity, reduces rumination
+- Positive emotions: DMN engaged in positive self-referential thought
+
+================================================================================
+SECTION 18: RESTING STATE fMRI
+================================================================================
+
+Resting state fMRI (rs-fMRI) measures brain activity when participants are NOT
+doing any specific task — just lying still with eyes open or closed.
+
+WHY RESTING STATE IS VALUABLE:
+- No task design needed (simpler to collect)
+- Can be done in patients who cannot perform tasks (coma, infants)
+- Reveals intrinsic brain organization
+- Reproducible across individuals and sites
+- Sensitive to psychiatric and neurological disorders
+
+KEY RESTING STATE NETWORKS (RSNs):
+1. Default Mode Network (DMN): mPFC, PCC, angular gyrus, hippocampus
+2. Salience Network: anterior insula, dACC
+3. Executive Control Network: dlPFC, inferior parietal
+4. Sensorimotor Network: primary motor and somatosensory cortex
+5. Visual Network: occipital cortex
+6. Auditory Network: superior temporal gyrus
+7. Dorsal Attention Network: FEF, IPS
+8. Frontoparietal Network: lateral PFC, parietal
+
+EMOTIONAL IMPLICATIONS OF RESTING STATE:
+- Habitual emotional processing is reflected in resting state
+- Anxious individuals: hyperconnected amygdala at rest
+- Depressed individuals: overconnected sgACC at rest
+- Resting state predicts emotional reactivity to upcoming stimuli
+- Baseline emotional state (mood) affects resting connectivity
+
+================================================================================
+SECTION 19: TASK-BASED fMRI
+================================================================================
+
+Task-based fMRI measures brain responses during specific cognitive or
+emotional tasks.
+
+EXPERIMENTAL PARADIGMS:
+
+BLOCK DESIGN:
+- Long blocks (20-60 seconds) of a single condition
+- Alternating with rest blocks
+- Example: 30s of fearful faces, 30s rest, repeat
+- Advantages: strong, easily detected signal
+- Disadvantages: can't separate individual trial responses
+- Good for: localizing regions, clinical mapping
+
+EVENT-RELATED DESIGN:
+- Brief individual trials (2-4 seconds each)
+- Trials from different conditions interleaved randomly
+- Example: 2s fearful face, 2s neutral face, 2s angry face, mixed
+- Advantages: can separate individual trial responses, model better
+- Disadvantages: requires more trials, lower power per condition
+- Good for: cognitive studies, individual trial analysis, MVPA
+
+MIXED DESIGNS:
+- Combines both block and event-related elements
+- Separates sustained (block-level) from transient (event-level) responses
+
+NATURALISTIC PARADIGMS:
+- Participants watch movies, listen to music, hear stories
+- More ecologically valid (closer to real life)
+- Analyzed with inter-subject correlation (ISC) or GLM with continuous annotations
+- Datasets: Emo-FilM, Midnight Scan Club
+
+TYPICAL EMOTION TASK EXAMPLE:
+- Stimulus: image of a fearful face (3 seconds)
+- ISI: 1-2 seconds fixation cross
+- 80 trials per session (20 per emotion × 4 emotions)
+- Total scan time: ~8-10 minutes per run
+- Behavioral response: rate emotional intensity (1-7 scale)
+
+================================================================================
+SECTION 20: fMRI EXPERIMENTAL DESIGN
+================================================================================
+
+BEFORE THE SCAN — PLANNING:
+1. Define research question precisely
+2. Choose appropriate task paradigm
+3. Power analysis: how many participants are needed?
+   (Typical fMRI studies need N=20-30 minimum for basic contrasts;
+    N=100+ for reliable individual difference effects)
+3. Ethics approval (Institutional Review Board / IRB)
+4. Informed consent from all participants
+5. Pilot test outside scanner first
+
+PARTICIPANT SELECTION:
+Standard exclusion criteria:
+- Metal implants (pacemakers, cochlear implants, aneurysm clips)
+- Severe claustrophobia
+- Body weight > scanner limit (~300 lbs)
+- Pregnancy
+- Recent head injury
+- Specific medication (may affect BOLD signal)
+
+SCAN PROTOCOL PARAMETERS (from OpenNeuro ds002675 used in this dataset):
+- Scanner: Siemens Skyra 3T
+- Sequence: EPI (Echo Planar Imaging)
+- TR (Repetition Time): 4 seconds
+- TE (Echo Time): 30ms
+- Flip Angle: 90°
+- Slice Thickness: 2mm
+- Number of Slices: 49
+- Matrix: 94 × 94
+- Receive Coil: 32-channel head coil
+- Phase Encoding Direction: posterior-anterior (j-)
+- Total Readout Time: 30.2ms
+
+GOOD SCIENTIFIC PRACTICE:
+- Pre-register your hypotheses before collecting data
+- Use open data formats (BIDS standard)
+- Share your data on OpenNeuro after publication
+- Report effect sizes not just p-values
+- Correct for multiple comparisons rigorously
+- Replicate key findings before claiming a discovery
+
+================================================================================
+SECTION 21: KEY RESEARCH FINDINGS
+================================================================================
+
+FOUNDATIONAL DISCOVERIES:
+
+1. OGAWA ET AL. (1990): Discovered the BOLD signal
+   Blood oxygenation affects MRI signal — foundation of fMRI
+
+2. KWONG ET AL. (1992): First human fMRI
+   First demonstration of task-related BOLD signal changes in humans
+
+3. LEDOUX (1996): The Emotional Brain
+   Two pathways to amygdala — fast thalamic route and slow cortical route
+   Fear conditioning occurs in amygdala
+
+4. HAXBY ET AL. (2001): Distributed representation
+   Ventral temporal cortex uses distributed, overlapping patterns for object categories
+   Faces and houses can be distinguished from pattern across whole region
+   Even-odd run reliability r=0.81-0.87 (img_001 in this dataset)
+
+5. DAMASIO (1994): Somatic Marker Hypothesis
+   Emotions guide rational decision-making via bodily signals
+   vmPFC damage impairs decisions despite intact reasoning
+
+6. PHAN ET AL. (2002): Meta-analysis of emotion fMRI
+   55 studies, N=874 participants
+   Amygdala: specifically for fear
+   Basal ganglia: positive emotions
+   Insula: disgust
+   ACC: cognitive components of emotion
+
+7. WAGER ET AL. (2013): Neurological Pain Signature (NPS)
+   First reliable multivariate brain "signature" that predicts pain intensity
+   Template for emotion signature work
+
+8. WAGER AND CHANG (2015): Negative Emotion Signature
+   fMRI + machine learning identifies brain signature predicting negative emotion
+   intensity in INDIVIDUALS — not just groups
+   Signature spans multiple distributed networks
+
+9. BARRET (2017): Constructed Emotion
+   Emotions are not discovered in specific brain regions
+   They are constructed from core affect + conceptual knowledge
+
+10. ALLEN ET AL. (2022): The "Emotional Homunculus"
+    Emotions activate somatotopically organized sensorimotor regions
+    Different emotions map to different body part representations
+
+================================================================================
+SECTION 22: LIMITATIONS OF fMRI
+================================================================================
+
+fMRI is powerful but has important limitations every researcher must know:
+
+TECHNICAL LIMITATIONS:
+
+1. Indirect Measurement
+   BOLD signal reflects blood flow, not neural activity directly.
+   Neurovascular coupling can be disrupted by disease, aging, drugs, caffeine.
+
+2. Poor Temporal Resolution
+   The HRF peaks at ~5 seconds — events closer than ~2 seconds cannot be
+   separated temporally. This is 1000x slower than neural firing (milliseconds).
+
+3. Spatial Resolution Limits
+   Standard fMRI voxels (2-3mm) contain ~1 million neurons each.
+   Cannot detect single neurons or even small neural ensembles.
+
+4. Motion Sensitivity
+   Even 0.5mm of head motion can contaminate data.
+   Anxiety and discomfort cause motion. Pediatric and clinical populations
+   move more, making data quality worse in exactly the populations we most want
+   to study.
+
+5. Noise Sources
+   Cardiac (heartbeat), respiratory (breathing), scanner drift, thermal noise.
+   Signal change is only 1-5% — these noise sources can be comparable in size.
+
+6. Signal Distortion Near Air
+   EPI sequences are susceptible to susceptibility artifacts near air-tissue
+   interfaces (sinuses, ear canals). This particularly affects:
+   - Orbitofrontal cortex (near sinuses)
+   - Inferior temporal lobe (near ear canals)
+   - Amygdala (near both)
+
+INTERPRETATIONAL LIMITATIONS:
+
+7. Reverse Inference Problem
+   Seeing amygdala activation does NOT necessarily mean "fear."
+   The amygdala is activated by novelty, social stimuli, negative stimuli,
+   positive arousing stimuli, unexpected stimuli, and more.
+   Cannot conclude specific emotion from single region activation alone.
+
+8. Ecological Validity
+   Lying in a loud, claustrophobic scanner is very different from real life.
+   Emotions experienced during fMRI may differ from real-world emotional states.
+
+9. Individual Variability
+   Brain anatomy and function vary enormously between individuals.
+   Group average results may not apply to any individual.
+
+10. Publication Bias
+    Only positive results tend to be published.
+    Many failed replications have occurred in emotion neuroscience.
+    Use meta-analyses and pre-registered studies for more reliable findings.
+
+PRACTICAL LIMITATIONS:
+
+11. Cost
+    fMRI scanners cost $1-3 million to purchase, plus $500-1000/hour to operate.
+    This restricts sample sizes and replication.
+
+12. Accessibility
+    Most fMRI research uses WEIRD samples:
+    Western, Educated, Industrial, Rich, Democratic populations.
+    Neuroimaging data from African, South Asian, Southeast Asian populations
+    is severely underrepresented. NeuroEmo dataset (Indian participants) is an
+    important exception.
+
+13. Static Snapshot
+    Standard fMRI captures average activity over a session.
+    Emotions are dynamic and evolve. Dynamic FC helps but has its own limitations.
+
+================================================================================
+SECTION 23: GLOSSARY OF TERMS
+================================================================================
+
+ACC — Anterior Cingulate Cortex
+BOLD — Blood Oxygen Level Dependent
+BIDS — Brain Imaging Data Structure
+BLA — Basolateral Amygdala
+CeA — Central Amygdala
+dlPFC — Dorsolateral Prefrontal Cortex
+DMN — Default Mode Network
+DFC — Dynamic Functional Connectivity
+DOF — Degrees of Freedom
+EEG — Electroencephalography
+EPI — Echo Planar Imaging
+FC — Functional Connectivity
+FDR — False Discovery Rate
+FFA — Fusiform Face Area
+fMRI — Functional Magnetic Resonance Imaging
+fNIRS — Functional Near-Infrared Spectroscopy
+FWE — Family-Wise Error
+GLM — General Linear Model
+GNN — Graph Neural Network
+HRF — Hemodynamic Response Function
+ICA — Independent Component Analysis
+IFG — Inferior Frontal Gyrus
+ISC — Inter-Subject Correlation
+MEG — Magnetoencephalography
+MNI — Montreal Neurological Institute (standard brain space)
+mPFC — Medial Prefrontal Cortex
+MVPA — Multivariate Pattern Analysis
+NAcc — Nucleus Accumbens
+NIfTI — Neuroimaging Informatics Technology Initiative (file format)
+OFC — Orbitofrontal Cortex
+PAG — Periaqueductal Gray
+PCC — Posterior Cingulate Cortex
+PET — Positron Emission Tomography
+PFC — Prefrontal Cortex
+PPI — Psychophysiological Interaction
+ROI — Region of Interest
+RSA — Representational Similarity Analysis
+RSN — Resting State Network
+SAR — Specific Absorption Rate
+sgACC — Subgenual Anterior Cingulate Cortex
+SPECT — Single Photon Emission Computed Tomography
+SPM — Statistical Parametric Mapping
+STS — Superior Temporal Sulcus
+SVM — Support Vector Machine
+TE — Echo Time
+TPJ — Temporoparietal Junction
+TR — Repetition Time (time to acquire one brain volume)
+TBI — Traumatic Brain Injury
+vmPFC — Ventromedial Prefrontal Cortex
+vlPFC — Ventrolateral Prefrontal Cortex
+VOI — Volume of Interest
+VTA — Ventral Tegmental Area
+VWFA — Visual Word Form Area
+
+================================================================================
+SECTION 24: KEY RESEARCHERS AND PAPERS
+================================================================================
+
+FOUNDATIONAL RESEARCHERS:
+
+Seiji Ogawa — Discovered the BOLD signal (1990)
+Joseph LeDoux — Fear circuits, amygdala, "The Emotional Brain" (1996)
+Antonio Damasio — Somatic marker hypothesis, "Descartes' Error" (1994)
+James Haxby — Distributed representation, MVPA in fMRI (2001)
+Paul Ekman — Basic emotions theory, facial action coding system
+James Russell — Circumplex model of emotion, valence-arousal dimensions
+Lisa Feldman Barrett — Constructed emotion theory (2017)
+Tor Wager — Neurological pain signature, brain-based emotion signatures
+Russ Poldrack — Open neuroscience, OpenNeuro, reproducibility
+Karl Friston — SPM, dynamic causal modeling, predictive coding
+Nancy Kanwisher — Fusiform face area, scene-selective cortex
+Uri Hasson — Naturalistic fMRI, inter-subject correlation
+
+KEY PAPERS TO READ:
+
+Haxby JV et al. (2001). Distributed and Overlapping Representations of Faces and
+Objects in Ventral Temporal Cortex. Science, 293, 2425-2430.
+
+LeDoux JE (2000). Emotion Circuits in the Brain. Annual Review of Neuroscience.
+
+Phan KL et al. (2002). Functional Neuroanatomy of Emotion: A Meta-Analysis of
+Emotion Activation Studies in PET and fMRI. NeuroImage, 16(2), 331-348.
+
+Wager TD et al. (2013). An fMRI-Based Neurological Signature of Physical Pain.
+New England Journal of Medicine, 368(15), 1388-1397.
+
+Coffey BJ et al. (2020). The language network reemerges during recovery from
+severe traumatic brain injury. medRxiv. doi: 10.1101/2020.01.10.20017004
+[SOURCE OF OPENNEURO ds002675 USED IN THIS DATASET]
+
+Ekman P (1992). An Argument for Basic Emotions. Cognition & Emotion, 6(3-4), 169-200.
+
+Barrett LF (2017). How Emotions Are Made: The Secret Life of the Brain.
+(Book — Constructed Emotion Theory)
+
+Norman KA et al. (2006). Beyond Mind-Reading: Multi-Voxel Pattern Analysis of
+fMRI Data. Trends in Cognitive Sciences, 10(9), 424-430.
+
+================================================================================
+SECTION 25: DATASETS AND RESOURCES
+================================================================================
+
+SEE ALSO: RESOURCES.md in this repository for a full curated list.
+
+TOP DATASETS FOR fMRI EMOTION AI:
+
+1. OpenNeuro (openneuro.org)
+   600+ open datasets, CC0 license
+   Filter by: emotion, language, task, resting state
+
+2. NeuroEmo (OpenNeuro ds005700)
+   40 participants, Indian population
+   5 emotions: calm, afraid, delighted, depressed, excited
+   Bollywood movie clips as stimuli
+   DFC-GCNN analysis
+
+3. Emo-FilM
+   30 participants watching 14 films (2.5 hours)
+   50 emotion annotations per moment
+   Heart rate, respiration, fMRI
+   High temporal resolution annotations
+
+4. OpenNeuro ds002675 (this repository)
+   Language network in traumatic brain injury
+   16 controls + 8 TBI patients
+   Siemens Skyra 3T, language paradigm
+
+5. Natural Scenes Dataset (NSD)
+   8 participants, 7T scanner, 5000 images each
+   Brain responses to natural images
+   Used for image reconstruction from fMRI
+
+6. Human Connectome Project (HCP)
+   1,200 participants, 3T + 7T
+   Comprehensive cognitive, structural, functional data
+   Emotion tasks included
+
+7. Amsterdam Open MRI Collection (AOMIC)
+   ~1,000 participants, 3T
+   Emotion matching, face perception, working memory, resting state
+   CC0 license on OpenNeuro
+
+TOOLS:
+- FSL: fsl.fmrib.ox.ac.uk
+- SPM12: fil.ion.ucl.ac.uk/spm
+- Nilearn (Python): nilearn.github.io
+- fMRIPrep: fmriprep.org
+- FreeSurfer: freesurfer.net
+- Andy's Brain Book: andysbrainbook.readthedocs.io
+
+================================================================================
+END OF DOCUMENT
+================================================================================
+
+NeuroMap Dataset — github.com/debdoesbiz/neuromap-dataset
+License: CC BY 4.0 — Free to use with attribution
+"Open science for open minds."
+================================================================================
