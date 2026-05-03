@@ -1,0 +1,74 @@
+{
+  "Name": "NeuroMap Dataset",
+  "Version": "1.0.0",
+  "Description": "An open-source curated dataset combining brain imaging references and psychological annotations for training AI models in emotion detection, intent detection, neural pathway mapping, and cognitive state classification.",
+  "License": "CC BY 4.0",
+  "Authors": [
+    "Debojeet Mukherjee"
+  ],
+  "Contact": {
+    "X": "https://x.com/debdoesbiz",
+    "GitHub": "https://github.com/debdoesbiz"
+  },
+  "Repository": "https://github.com/debdoesbiz/neuromap-dataset",
+  "Created": "2025",
+  "LastUpdated": "2025",
+  "Language": "English",
+  "Domain": [
+    "Neuroscience",
+    "Psychology",
+    "Artificial Intelligence",
+    "Affective Computing"
+  ],
+  "Tasks": [
+    "Emotion Detection",
+    "Intent Detection",
+    "Neural Pathway Mapping",
+    "Psychology Classification"
+  ],
+  "BrainRegionsCovered": [
+    "Amygdala",
+    "Prefrontal Cortex",
+    "Hippocampus",
+    "Anterior Cingulate Cortex",
+    "Insula",
+    "Thalamus",
+    "Basal Ganglia",
+    "Occipital Lobe",
+    "Temporal Lobe",
+    "Parietal Lobe",
+    "Broca's Area",
+    "Wernicke's Area"
+  ],
+  "EmotionClasses": [
+    "Fear",
+    "Joy",
+    "Sadness",
+    "Anger",
+    "Disgust",
+    "Surprise",
+    "Calm",
+    "Anxiety"
+  ],
+  "DataTypes": [
+    "Brain scan reference images (PNG/JPG)",
+    "Psychological text annotations",
+    "External metadata (OpenNeuro CC0)"
+  ],
+  "ExternalSources": [
+    {
+      "Name": "The language network reemerges during recovery from severe traumatic brain injury",
+      "Source": "OpenNeuro",
+      "DatasetID": "ds002675",
+      "License": "CC0",
+      "URL": "https://openneuro.org/datasets/ds002675",
+      "Citation": "Coffey BJ, Threlkeld ZD, Bodien YB, Edlow BL. medRxiv 2020. doi: 10.1101/2020.01.10.20017004"
+    }
+  ],
+  "Stats": {
+    "TotalEntries": "50+",
+    "Status": "Active — growing"
+  },
+  "HowToAcknowledge": "Please cite: Debojeet Mukherjee. NeuroMap Dataset (2025). https://github.com/debdoesbiz/neuromap-dataset",
+  "BIDSVersion": "1.1.1"
+}
